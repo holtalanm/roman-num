@@ -1,0 +1,29 @@
+{
+  "name": "roman-num",
+  "version": "0.0.1",
+  "description": "Roman Numeral to Number",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holtalanm/roman-num.git"
+  },
+  "keywords": [
+    "roman",
+    "numeral",
+    "number",
+    "rome"
+  ],
+  "author": "Alan Holt <holtalanm@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/holtalanm/roman-num/issues"
+  },
+  "homepage": "https://github.com/holtalanm/roman-num#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}
