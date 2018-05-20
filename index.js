@@ -1,43 +1,38 @@
-var numerals = {
-  'nulla': 0,
-  'I': 1,
-  'V': 5,
-  'X': 10,
-  'L': 50,
-  'C': 100,
-  'D': 500,
-  'M': 1000
-}
-
-var nums = {
-  0: 'nulla',
-  1: 'I',
-  5: 'V',
-  10: 'X',
-  50: 'L',
-  100: 'C',
-  500: 'D',
-  1000: 'M'
-}
+var numerals = [
+  {ro: 'nulla', val: 0},
+  {ro: 'I', val: 1},
+  {ro: 'IV', val: 4},
+  {ro: 'V', val: 5},
+  {ro: 'IX', val: 9},
+  {ro: 'X', val: 10},
+  {ro: 'XL', val: 40},
+  {ro: 'L', val: 50},
+  {ro: 'XC', val: 90},
+  {ro: 'C', val: 100},
+  {ro: 'CD', val: 400},
+  {ro: 'D', val: 500},
+  {ro: 'CM', val: 900},
+  {ro: 'M', val: 1000}
+]
 
 function takeLargest(num) {
-  var result = 0
-  for(var numeral in numerals) {
-    var numeralNum = numerals[numeral]
-    if(numeralNum <= num && numeralNum > result)
-      result = numeralNum
-  }
+  var result = numerals[0]
+  numerals.forEach(function(numeral) {
+    if(numeral.val <= num && numeral.val > result.val) {
+      result = numeral
+    }
+  })
   return result
 }
 
 function toNumeral(num) {
-  var result = '', curr = 0;
+  var result = '', curr = numerals[0];
   while(num != 0) {
     curr = takeLargest(num)
-    result = result + nums[curr]
-    num = num - curr
+    result = result + curr.ro
+    num = num - curr.val
   }
-  if(result == '') return nums[0]
+  if(result == '') return numerals[0].ro
   else return result
 }
 
