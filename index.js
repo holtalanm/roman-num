@@ -26,9 +26,11 @@ function takeLargest(num) {
 }
 
 function toNumeral(num) {
+  num = Number(num)
   var result = '', curr = numerals[0];
   while(num != 0) {
     curr = takeLargest(num)
+    if(curr.val == 0) return numerals[0].ro
     result = result + curr.ro
     num = num - curr.val
   }
@@ -36,4 +38,29 @@ function toNumeral(num) {
   else return result
 }
 
+function getMatch(numeral) {
+  numeral = '' + numeral
+  var result = numerals[0]
+  numerals.forEach(function(num) {
+    if(numeral.length >= num.ro.length
+      && numeral.slice(0, num.ro.length) == num.ro && num.val > result.val) {
+        result = num
+      } 
+  })
+  return result
+}
+
+function toNumber(numeral) {
+  var result = 0, curr = numerals[0];
+  numeral = '' + numeral
+  while(numeral.length > 0) {
+    curr = getMatch(numeral)
+    if(curr.val == 0) return numerals[0].val
+    result += curr.val
+    numeral = numeral.slice(curr.ro.length)
+  }
+  return result
+}
+
 exports.toNumeral = toNumeral
+exports.toNumber = toNumber
