@@ -44,3 +44,78 @@ describe('numeral', function() {
     })
   })
 })
+
+describe('addition', function() {
+  var tests = [
+    {numerals: [], val: 'nulla'},
+    {numerals: ['I'], val: 'I'},
+    {numerals: ['IV', 'V'], val: 'IX'},
+    {numerals: ['I', 'IX'], val: 'X'},
+    {numerals: ['III', 'VIII'], val: 'XI'},
+    {numerals: ['IX', 'C', 'X'], val: 'CXIX'},
+    {numerals: ['C', ['X', 'II'], 'L'], val: 'CLXII'}
+  ]
+
+  tests.forEach(function(test) {
+    it('should add ' + JSON.stringify(test.numerals) + ' to result ' + test.val, function() {
+      var result = roman.plus(test.numerals)
+      result.should.be.equal(test.val)
+    })
+  })
+})
+
+describe('subtraction', function() {
+  var tests = [
+    {numerals: [], val: 'nulla'},
+    {numerals: ['I'], val: 'I'},
+    {numerals: ['I', 'I'], val: 'nulla'},
+    {numerals: ['V', 'I'], val: 'IV'},
+    {numerals: ['IX', 'II', 'V'], val: 'II'},
+    {numerals: ['C', ['X', 'II'], 'IX'], val: 'LXXXIII'}
+  ]
+
+  tests.forEach(function(test) {
+    it('should subtract ' + JSON.stringify(test.numerals) + ' to result ' + test.val, function() {
+      var result = roman.minus(test.numerals)
+      result.should.be.equal(test.val)
+    })
+  })
+})
+
+describe('division', function() {
+  var tests = [
+    {numerals: [], val: 'nulla'},
+    {numerals: ['I'], val: 'I'},
+    {numerals: ['I', 'I'], val: 'I'},
+    {numerals: ['II', 'II'], val: 'I'},
+    {numerals: ['X', 'II'], val: 'V'},
+    {numerals: ['C', 'V'], val: 'XX'},
+    {numerals: ['C', ['X', 'V'], 'V'], val: 'X'}
+  ]
+
+  tests.forEach(function(test) {
+    it('should divide ' + JSON.stringify(test.numerals) + ' to result ' + test.val, function() {
+      var result = roman.divide(test.numerals)
+      result.should.be.equal(test.val)
+    })
+  })
+})
+
+describe('multiplication', function() {
+  var tests = [
+    {numerals: [], val: 'nulla'},
+    {numerals: ['I'], val: 'I'},
+    {numerals: ['I', 'I'], val: 'I'},
+    {numerals: ['III', 'II'], val: 'VI'},
+    {numerals: ['V', 'X'], val: 'L'},
+    {numerals: [['II', 'X'], 'V'], val: 'C'},
+    {numerals: ['C', ['L', 'X'], 'nulla'], val: 'nulla'}
+  ]
+
+  tests.forEach(function(test) {
+    it('should multiply ' + JSON.stringify(test.numerals) + ' to result ' + test.val, function() {
+      var result = roman.multiply(test.numerals)
+      result.should.be.equal(test.val)
+    })
+  })
+})

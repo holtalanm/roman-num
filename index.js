@@ -15,6 +15,21 @@ var numerals = [
   {ro: 'M', val: 1000}
 ]
 
+var operators = {
+  '+': function(val1, val2) {
+    return val1 + val2
+  },
+  '-': function(val1, val2) {
+    return val1 - val2
+  },
+  '/': function(val1, val2) {
+    return val1 / val2
+  },
+  '*': function(val1, val2) {
+    return val1 * val2
+  }
+}
+
 function takeLargest(num) {
   var result = numerals[0]
   numerals.forEach(function(numeral) {
@@ -62,5 +77,46 @@ function toNumber(numeral) {
   return result
 }
 
+function operate(operator, val1, val2) {
+  return operators[operator](val1, val2)
+}
+
+function performOperation(operator, values) {
+  var start = 0
+  if(values.length > 0) {
+    if(Array.isArray(values[0]))
+      start = toNumber(performOperation(operator, values[0]))
+    else
+      start = toNumber(values[0])
+  }
+  return toNumeral(values.slice(1).reduce(function(curr, next) {
+    if(Array.isArray(next)) {
+      return operate(operator, curr, toNumber(performOperation(operator, next)))
+    } else {
+      return operate(operator, curr, toNumber(next))
+    }
+  }, start))
+}
+
+function plus(...values) {
+  return performOperation('+', values)
+}
+
+function minus(...values) {
+  return performOperation('-', values)
+}
+
+function divide(...values) {
+  return performOperation('/', values)
+}
+
+function multiply(...values) {
+  return performOperation('*', values)
+}
+
 exports.toNumeral = toNumeral
 exports.toNumber = toNumber
+exports.plus = plus
+exports.minus = minus
+exports.divide = divide
+exports.multiply = multiply
