@@ -52,4 +52,4 @@ console.log(romanum.divide('L', 'V', 'V')) // 'II'
 
 So, if you dream of racing your chariot under the aqueducts of acient Rome, pick up **Romanum** today and fullfill your dreams!
 
-*disclaimer:  **Romanum** makes no claim to allowing you to do any of the abov, besides performing mathematical operations with roman numerals. All other activities are purely fantasy, and should not be attempted, unless you are a skilled swordsman or have experience driving a team of horses*
+*disclaimer:  **Romanum** makes no claim to allowing you to do any of the above, besides performing mathematical operations with roman numerals. All other activities are purely fantasy, and should not be attempted, unless you are a skilled swordsman or have experience driving a team of horses*
