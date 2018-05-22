@@ -12,7 +12,19 @@ var numerals = [
   {ro: 'CD', val: 400},
   {ro: 'D', val: 500},
   {ro: 'CM', val: 900},
-  {ro: 'M', val: 1000}
+  {ro: 'M', val: 1000},
+  {ro: 'MV̅', val: 4000},
+  {ro: 'V̅', val: 5000},
+  {ro: 'V̅X̅', val: 9000},
+  {ro: 'X̅', val: 10000},
+  {ro: 'X̅L̅', val: 40000},
+  {ro: 'L̅', val: 50000},
+  {ro: 'L̅C̅', val: 90000},
+  {ro: 'C̅', val: 100000},
+  {ro: 'C̅D̅', val: 400000},
+  {ro: 'D̅', val: 500000},
+  {ro: 'D̅M̅', val: 900000},
+  {ro: 'M̅', val: 1000000},
 ]
 
 var operators = {
@@ -60,7 +72,7 @@ function getMatch(numeral) {
     if(numeral.length >= num.ro.length
       && numeral.slice(0, num.ro.length) == num.ro && num.val > result.val) {
         result = num
-      } 
+      }
   })
   return result
 }

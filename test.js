@@ -12,6 +12,7 @@ describe('number', function() {
     {num: 4, val: 'IV'},
     {num: 99, val: 'XCIX'},
     {num: 98, val: 'XCVIII'},
+    {num: 478432, val: 'C̅D̅L̅X̅X̅V̅MMMCDXXXII'},
     {num: 'hello world', val: 'nulla'}
   ]
 
@@ -34,6 +35,7 @@ describe('numeral', function() {
     {numeral: 'IV', val: 4},
     {numeral: 'XCIX', val: 99},
     {numeral: 'XCVIII', val: 98},
+    {numeral: 'C̅D̅L̅X̅X̅V̅MMMCDXXXII', val: 478432},
     {numeral: 'hello world', val: 0}
   ]
 
@@ -53,7 +55,8 @@ describe('addition', function() {
     {numerals: ['I', 'IX'], val: 'X'},
     {numerals: ['III', 'VIII'], val: 'XI'},
     {numerals: ['IX', 'C', 'X'], val: 'CXIX'},
-    {numerals: ['C', ['X', 'II'], 'L'], val: 'CLXII'}
+    {numerals: ['C', ['X', 'II'], 'L'], val: 'CLXII'},
+    {numerals: ['D̅', 'X', 'V̅'], val: 'D̅V̅X'},
   ]
 
   tests.forEach(function(test) {
@@ -71,7 +74,8 @@ describe('subtraction', function() {
     {numerals: ['I', 'I'], val: 'nulla'},
     {numerals: ['V', 'I'], val: 'IV'},
     {numerals: ['IX', 'II', 'V'], val: 'II'},
-    {numerals: ['C', ['X', 'II'], 'IX'], val: 'LXXXIII'}
+    {numerals: ['C', ['X', 'II'], 'IX'], val: 'LXXXIII'},
+    {numerals: ['D̅', 'V̅'], val: 'C̅D̅L̅C̅V̅'}, // 495000
   ]
 
   tests.forEach(function(test) {
@@ -90,7 +94,7 @@ describe('division', function() {
     {numerals: ['II', 'II'], val: 'I'},
     {numerals: ['X', 'II'], val: 'V'},
     {numerals: ['C', 'V'], val: 'XX'},
-    {numerals: ['C', ['X', 'V'], 'V'], val: 'X'}
+    {numerals: ['C', ['X', 'V'], 'V'], val: 'X'},
   ]
 
   tests.forEach(function(test) {
@@ -109,7 +113,8 @@ describe('multiplication', function() {
     {numerals: ['III', 'II'], val: 'VI'},
     {numerals: ['V', 'X'], val: 'L'},
     {numerals: [['II', 'X'], 'V'], val: 'C'},
-    {numerals: ['C', ['L', 'X'], 'nulla'], val: 'nulla'}
+    {numerals: ['C', ['L', 'X'], 'nulla'], val: 'nulla'},
+    {numerals: ['M', 'M'], val: 'M̅'},
   ]
 
   tests.forEach(function(test) {
