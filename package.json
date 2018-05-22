@@ -1,6 +1,6 @@
 {
   "name": "romanum",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Roman Numeral Math!",
   "main": "index.js",
   "scripts": {
